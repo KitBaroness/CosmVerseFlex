@@ -1,4 +1,4 @@
-README.txt
+README.txtmd
 ==========
 
 Project: Wallet Application ***EXAMPLE***
@@ -17,11 +17,13 @@ Prerequisites
 - An IDE that supports Kotlin https://github.com/VSCodium/vscodium/releases (1.82.2)
 - Maven https://javalin.io/tutorials/maven-setup (3.6.3)
 - Javalin https://github.com/javalin/javalin (5.6.3)
+- rustc 1.77.0
 
 Project Structure
 -----------------
 - src/main/kotlin/com/wallet/Wallet.kt: Main Kotlin file for backend logic.
 - src/main/resources/ : Static HTML file(s) for the frontend.
+- src/main/rust rs files
 
 Setup Instructions
 ------------------
@@ -54,13 +56,17 @@ Important Notes
 - For detailed information on the project's functionality and API endpoints, refer to the inline comments in the `Wallet.kt` file.
 
 
-***************************************************
+```***************************************************
 *  ____  ___   ___  ____    _    _   _  ____ _  __*
 * / ___|/ _ \ / _ \|  _ \  | |  | | | |/ ___| |/ /*
 *| |  _| | | | | | | | | | | |  | | | | |   | ' / *
 *| |_| | |_| | |_| | |_| | | |__| |_| | |___| . \ *
 * \____|\___/ \___/|____/  |_____\___/ \____|_|\_\*
-***************************************************
+***************************************************```
 -------
 contact @NinjaAssPirate.
 
+```./gradlew cleanRust     // To clean Rust artifacts
+./gradlew buildRust     // To build Rust code
+./gradlew copyRustBinaries  // To copy the built binaries to the specified directory
+./gradlew build         // To build your entire project, including Rust components```
