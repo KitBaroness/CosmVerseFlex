@@ -18,7 +18,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("com.wallet.WalletKt")
+    mainClass.set("com.base.UnsterKt")
 }
 
 // my cheat to make the builds build
