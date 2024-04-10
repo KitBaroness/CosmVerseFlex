@@ -8,18 +8,21 @@
   \  \:\  /:/   \  \:\  ~~~   \  \::/ /:/  \__\/  \:\   \  \::/ /:/   \  \::/~~~~ 
    \  \:\/:/     \  \:\        \__\/ /:/        \  \:\   \  \:\/:/     \  \:\     
     \  \::/       \  \:\         /__/:/          \__\/    \  \::/       \  \:\    
-     \__\/         \__\/         \__\/                     \__\/         \__\/   ```
+     \__\/         \__\/         \__\/                     \__\/         \__\/   
+     
+```
 
 
 README.md
 ==========
 
-Project: Wallet Application ***EXAMPLE***
+### Project: Wallet Application ***EXAMPLE***
 ===========================
 
-Introduction
+### Introduction
 ------------
-This Wallet Application is a simple Kotlin-based web project using Javalin to serve a web page and handle backend logic. The project includes a `Wallet.kt` Kotlin file as the main class and a `home.html` file for the frontend.
+* This Wallet Application is a simple Kotlin-based web project using Javalin to serve a web page and handle backend logic. 
+* The project includes a `Wallet.kt` Kotlin file as the main class and a `home.html` file for the frontend.
 
 #### Prerequisites
 -------------
@@ -58,7 +61,7 @@ This Wallet Application is a simple Kotlin-based web project using Javalin to se
 
    'gradle run'
 
-   or
+   * or
 
    './gradlew run'
 
@@ -82,15 +85,27 @@ Important Notes
 *************************************************** 
 ```
 -------
-contact @NinjaAssPirate.
+#### contact @NinjaAssPirate.
 
 ```
                                   _                     
      )|(           +++           ((_           \|/      
     (o o)         (o o)         (o o)         (o o)     
 ooO--(_)--Ooo-ooO--(_)--Ooo-ooO--(_)--Ooo-ooO--(_)--Ooo-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - ```
-`./gradlew cleanRust`         // To clean Rust artifacts
-`./gradlew buildRust`         // To build Rust code
-`./gradlew copyRustBinaries`  // To copy the built binaries to the specified directory
-`./gradlew build`             // To build your entire project, including Rust components```
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+```
+#### To clean Rust artifacts
+
+`./gradlew cleanRust`      
+
+#### To build Rust code
+
+`./gradlew buildRust`
+
+#### To copy the built binaries to the specified directory
+
+`./gradlew copyRustBinaries`
+
+#### To build your entire project, including Rust components
+
+`./gradlew build`
