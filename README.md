@@ -63,8 +63,8 @@ README.md
 
 1. Navigate to the root directory of the project via the terminal or command prompt.
 2. Run the following command to build the project: 'gradle clean build'
-  - To use the Gradle Wrapper use './gradlew clean build'
-  - If ./gradlew permission is denied run 'chmod +x gradlew'
+  - To use the Gradle Wrapper use `./gradlew clean build`
+  - If ./gradlew permission is denied run `chmod +x gradlew`
 3. If the build is successful, you should see a BUILD SUCCESSFUL message in the terminal.
 
 - - - - - - - - - - - - - 
@@ -79,28 +79,21 @@ ooO--(_)--Ooo-ooO--(_)--Ooo-ooO--(_)--Ooo-ooO--(_)--Ooo-
 ### Running the Application
 -----------------------
 #### To clean Rust artifacts
-
 `./gradlew cleanRust`      
 
 #### To build Rust code
-
 `./gradlew buildRust`
 
 #### To copy the built binaries to the specified directory
-
 `./gradlew copyRustBinaries`
 
 #### To build your entire project, including Rust components
-
 `./gradlew build`
 
 1. To run the application, execute:
-
-   'gradle run'
-
+`gradle run`
    * or
-
-   './gradlew run'
+`./gradlew run`
 
 4. Once the application starts, it will be accessible at `http://localhost:8080`.
 5. Open a web browser and navigate to `http://localhost:8080` to view the `home.html` page.
@@ -119,6 +112,16 @@ Important Notes
 - Any changes to the Kotlin files will require a rebuild of the project.
 - For detailed information on the project's functionality and API endpoints, refer to the inline comments in the `Wallet.kt` file.
 
+```
+
+#### If no directories are specified, it will use the defaults defined within the script.
+
+### Customizing Paths
+Users can customize the source, processed, and deduplication paths by providing them as arguments when running the indexing.sh script.
+
+#### Additional Information
+-The Rust binaries for preprocessing and deduplication need to be compiled before   running the indexing.sh script.
+    -The `indexing.sh` script can be set up as a cron job for periodic execution.
 
 ```
 ***************************************************
@@ -130,5 +133,10 @@ Important Notes
 *************************************************** 
 ```
 -------
-#### contact @NinjaAssPirate.
+
+
+### Contributions and Contact
+* For contributions, please open a pull request or an issue.
+* For questions or support, contact @NinjaAssPirate | @KitBaroness
+
 
