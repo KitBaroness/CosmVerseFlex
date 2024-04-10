@@ -1,26 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Wallet Application</title>
+    <title>UNSTER Application</title>
 </head>
 <body>
     <div id="announcement"></div>
-    <div id="home">
-        Congratulations! You've successfully deployed the Wallet Template.
+
+    <div id="account-creation">
+        <h2>Create Account</h2>
+        <form id="create-account-form">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="text" id="phone" name="phone" placeholder="Phone Number" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <button type="submit">Create Account</button>
+        </form>
     </div>
+
+    <div id="home">
+        Congratulations! You've successfully the UNdatabase Indexer.
+    </div>
+
     <div id="menu"></div>
 
     <script>
-        // backend and display data
-        function displayMessage(announcement) {
-            document.getElementById("announcement").innerText = announcement;
-        }
+        document.getElementById("create-account-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var username = document.getElementById("username").value;
+            var phone = document.getElementById("phone").value;
+            var email = document.getElementById("email").value;
+
+            fetch("/create-account", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `username=${encodeURIComponent(username)}&phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}`
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Response data:", data);
+                alert(data.message);
+            })
+            .catch((error) => {
+                console.error('Fetch Error:', error);
+                alert("Error: " + error.message);
+            });
+        });
 
         function displayHome(home) {
             document.getElementById("home").innerText = home;
         }
 
-        displayHome("Congratulations! You've successfully deployed the Wallet Template");
+        displayHome("Congratulations! You've successfully deployed the UNSTER");
 
         // Additional JavaScript to interact with the backend
     </script>

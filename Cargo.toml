@@ -1,0 +1,31 @@
+[package]
+name = "Unster"
+version = "0.1.0"
+edition = "2021"
+
+authors = ["Kit Baroness <kit@AcmeWerx.com>"]
+description = "small data with the UNdatabase"
+repository = "https://github.com/cryptoversus-io/unster.git"
+license = "MIT" 
+
+[dependencies]
+regex = "1.3"
+serde = "1.0"
+log = "0.4"
+env_logger ="0.8"
+dotenv = "0.15"
+
+[[bin]]
+name = "my_binary"
+path = "src/main/rust/bin/my_binary.rs"
+
+[lib]
+name = "my_library"
+path = "src/main/rust/lib.rs"
+
+[dev-dependencies]
+
+[build-dependencies]
+
+[features]
+
