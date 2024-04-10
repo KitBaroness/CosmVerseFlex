@@ -45,6 +45,29 @@ README.md
 - `target/`: Rust build artifacts are placed here by Cargo.
 - `Cargo.toml`: Configuration file for Rust project management.
 
+### Configuration
+The application's configuration files are located in the `config/` directory. This includes logging configurations and any other necessary settings for the application to run.
+
+- For logging in Kotlin, update the `src/main/resources/logback.xml` with your desired logging levels and patterns.
+- For logging in Rust, you can set the `RUST_LOG` environment variable, or implement a custom configuration reader that uses the `config/` directory.
+
+
+### Execution Flow
+  #### File Preprocessing:
+
+- Rust code in preprocess_file.rs cleans the files in SOURCE_DIR.
+Processed files are stored in `PROCESSED_DIR.`
+#### File Deduplication:
+- Rust code in deduplicate.rs removes duplicates from files in `PROCESSED_DIR.`
+Deduplicated files are stored in `DEDUP_DIR.`
+Script Automation:
+- The  `indexing.sh` shell script calls the Rust binaries to automate preprocessing and deduplication.
+This script can be triggered manually or set up as a cron job for periodic execution.
+Database Indexing:
+
+If database indexing is part of the process, include logic in the Rust code or another script that reads from DEDUP_DIR and updates the database accordingly.
+Ensure your Rust binaries are compiled and located in a directory that the indexing.sh script knows about. If they're part of the release build, you may need to adjust the paths in the script to point to target/release instead of the current relative paths.
+
 #### Setup Instructions
 ------------------
 1. FORK then Clone your own forked repo.

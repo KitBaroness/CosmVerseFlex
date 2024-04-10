@@ -13,6 +13,8 @@ dependencies {
     implementation("io.javalin:javalin:5.6.3")
     implementation(kotlin("stdlib"))
     implementation("org.slf4j:slf4j-simple:2.0.0")
+    implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation("org.slf4j:slf4j-api:1.7.30") 
 }
 
 application {
