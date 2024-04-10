@@ -16,13 +16,13 @@
 README.md
 ==========
 
-### Project: Wallet Application ***EXAMPLE***
+### Project: Unster Application
 ===========================
 
 ### Introduction
 ------------
-* This Wallet Application is a simple Kotlin-based web project using Javalin to serve a web page and handle backend logic. 
-* The project includes a `Wallet.kt` Kotlin file as the main class and a `home.html` file for the frontend.
+* This Unster Application is a simple Kotlin-based web project using Javalin to serve a web page and handle backend logic. 
+* The project includes a `unster.kt` Kotlin file as the main class and a `home.html` file for the frontend.
 
 #### Prerequisites
 -------------
@@ -38,7 +38,7 @@ README.md
 
 #### Project Structure
 -----------------
-- `src/main/kotlin/com/wallet/`: Contains Kotlin source files.
+- `src/main/kotlin/com/base/`: Contains Kotlin source files.
 - `src/main/resources/static`: Houses static resources like HTML files for the frontend.
 - `src/main/rust/`: Contains Rust source files for file processing tasks.
 - `scripts/indexing.sh`: Bash script to automate file processing and deduplication tasks.
@@ -132,9 +132,9 @@ Execute the `indexing.sh` script to start the file processing and deduplication.
 
 Important Notes
 ---------------
-- The `home.html` file is served as a static file by the Javalin server running in `Wallet.kt`.
+- The `home.html` file is served as a static file by the Javalin server running in `unster.kt`.
 - Any changes to the Kotlin files will require a rebuild of the project.
-- For detailed information on the project's functionality and API endpoints, refer to the inline comments in the `Wallet.kt` file.
+- For detailed information on the project's functionality and API endpoints, refer to the inline comments in the `unster.kt` file.
 
 ```
 
@@ -201,7 +201,7 @@ Users can customize the source, processed, and deduplication paths by providing 
 
 - Set up to compile Rust code, define clean-up tasks, copy binaries, and integrate with the Kotlin build process.
 
-## Kotlin Application (`Wallet.kt`)
+## Kotlin Application (`Unster.kt`)
 
 - Serves as the Kotlin application's entry point, employing Javalin to handle web content delivery and HTTP request management.
 

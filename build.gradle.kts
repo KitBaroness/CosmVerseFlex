@@ -18,7 +18,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("com.wallet.WalletKt")
+    mainClass.set("com.base.UnsterKt")
 }
 
 // my cheat to make the builds build
@@ -54,7 +54,7 @@ tasks.register("buildRust") {
     doLast {
         exec {
             workingDir("src/main/rust") // Set the working directory to the Rust project root
-            commandLine("cargo", "build", "--release")
+            commandLine("cargo", "build", "--release",)
         }
     }
 }
@@ -65,7 +65,7 @@ tasks.register<Copy>("copyRustBinaries") {
     from("${projectDir}/src/main/rust/target/release/") // Adjust the path as needed
     into("${buildDir}/bin") // Destination directory for the Rust binaries
     // Specify patterns for the files to include, adjust based on your output binaries
-    include("**/*.exe", "**/*.dll", "**/*") // Include all files for Unix-like OS
+    include("**/*") // Include all files for Unix-like OS
 }
 
 // Make the build task depend on the copyRustBinaries task
