@@ -1,4 +1,17 @@
-README.txtmd
+```     ___           ___           ___                       ___           ___     
+     /__/\         /__/\         /  /\          ___        /  /\         /  /\    
+     \  \:\        \  \:\       /  /:/_        /  /\      /  /:/_       /  /::\   
+      \  \:\        \  \:\     /  /:/ /\      /  /:/     /  /:/ /\     /  /:/\:\  
+  ___  \  \:\   _____\__\:\   /  /:/ /::\    /  /:/     /  /:/ /:/_   /  /:/~/:/  
+ /__/\  \__\:\ /__/::::::::\ /__/:/ /:/\:\  /  /::\    /__/:/ /:/ /\ /__/:/ /:/___
+ \  \:\ /  /:/ \  \:\~~\~~\/ \  \:\/:/~/:/ /__/:/\:\   \  \:\/:/ /:/ \  \:\/:::::/
+  \  \:\  /:/   \  \:\  ~~~   \  \::/ /:/  \__\/  \:\   \  \::/ /:/   \  \::/~~~~ 
+   \  \:\/:/     \  \:\        \__\/ /:/        \  \:\   \  \:\/:/     \  \:\     
+    \  \::/       \  \:\         /__/:/          \__\/    \  \::/       \  \:\    
+     \__\/         \__\/         \__\/                     \__\/         \__\/   ```
+
+
+README.md
 ==========
 
 Project: Wallet Application ***EXAMPLE***
@@ -8,7 +21,7 @@ Introduction
 ------------
 This Wallet Application is a simple Kotlin-based web project using Javalin to serve a web page and handle backend logic. The project includes a `Wallet.kt` Kotlin file as the main class and a `home.html` file for the frontend.
 
-Prerequisites
+#### Prerequisites
 -------------
 - JDK (Java Development Kit) 1.8 or higher https://hg.openjdk.java.net/
       'sudo apt install openjdk-17-jdk'
@@ -19,19 +32,19 @@ Prerequisites
 - Javalin https://github.com/javalin/javalin (5.6.3)
 - rustc 1.77.0
 
-Project Structure
+#### Project Structure
 -----------------
 - src/main/kotlin/com/wallet/Wallet.kt: Main Kotlin file for backend logic.
 - src/main/resources/ : Static HTML file(s) for the frontend.
 - src/main/rust rs files
 
-Setup Instructions
+#### Setup Instructions
 ------------------
 1. Clone or download the project to your local machine.
 2. Open the project in your IDE.
 3. Ensure that the JDK is properly set up in your IDE.
 
-Building the Project
+#### Building the Project
 --------------------
 1. Navigate to the root directory of the project via the terminal or command prompt.
 2. Run the following command to build the project: 'gradle clean build'
@@ -39,12 +52,15 @@ Building the Project
   - If ./gradlew permission is denied run 'chmod +x gradlew'
 3. If the build is successful, you should see a BUILD SUCCESSFUL message in the terminal.
 
-Running the Application
+#### Running the Application
 -----------------------
 1. To run the application, execute:
-   '''gradle run'''
+
+   'gradle run'
+
    or
-   '''./gradlew run'''
+
+   './gradlew run'
 
 4. Once the application starts, it will be accessible at `http://localhost:8080`.
 5. Open a web browser and navigate to `http://localhost:8080` to view the `home.html` page.
@@ -56,17 +72,25 @@ Important Notes
 - For detailed information on the project's functionality and API endpoints, refer to the inline comments in the `Wallet.kt` file.
 
 
-```***************************************************
+```
+***************************************************
 *  ____  ___   ___  ____    _    _   _  ____ _  __*
 * / ___|/ _ \ / _ \|  _ \  | |  | | | |/ ___| |/ /*
 *| |  _| | | | | | | | | | | |  | | | | |   | ' / *
 *| |_| | |_| | |_| | |_| | | |__| |_| | |___| . \ *
 * \____|\___/ \___/|____/  |_____\___/ \____|_|\_\*
-***************************************************```
+*************************************************** 
+```
 -------
 contact @NinjaAssPirate.
 
-```./gradlew cleanRust     // To clean Rust artifacts
-./gradlew buildRust     // To build Rust code
-./gradlew copyRustBinaries  // To copy the built binaries to the specified directory
-./gradlew build         // To build your entire project, including Rust components```
+```
+                                  _                     
+     )|(           +++           ((_           \|/      
+    (o o)         (o o)         (o o)         (o o)     
+ooO--(_)--Ooo-ooO--(_)--Ooo-ooO--(_)--Ooo-ooO--(_)--Ooo-
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - ```
+`./gradlew cleanRust`         // To clean Rust artifacts
+`./gradlew buildRust`         // To build Rust code
+`./gradlew copyRustBinaries`  // To copy the built binaries to the specified directory
+`./gradlew build`             // To build your entire project, including Rust components```
