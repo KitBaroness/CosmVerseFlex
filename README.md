@@ -162,4 +162,78 @@ Users can customize the source, processed, and deduplication paths by providing 
 * For contributions, please open a pull request or an issue.
 * For questions or support, contact @NinjaAssPirate | @KitBaroness
 
+- - - - - - - - - 
+# Process Flow {MANIFESTO}
 
+## File Preprocessing
+
+- The `preprocess_file.rs` Rust script cleans input files by performing operations such as special character removal and whitespace trimming.
+- Cleaned files are directed to the directory defined by `PROCESSED_DIR`.
+
+## File Deduplication
+
+- The `deduplicate.rs` Rust script processes cleaned files to remove duplicate entries, ensuring data uniqueness.
+- Unique data entries are saved to the directory indicated by `DEDUP_DIR`.
+
+## Automation via Script
+
+- The `indexing.sh` script manages the file processing workflow, triggering the Rust scripts for preprocessing and deduplication tasks.
+- This script may be run manually or set as a cron job for routine operations.
+
+## Optional Database Indexing
+
+- In cases where data needs to be indexed into a database, either the Rust code is expanded or a supplementary script, `update_database.sh`, is implemented to import data from `DEDUP_DIR` to the chosen database system.
+
+# File and Script Interaction
+
+## Rust Scripts
+
+- `preprocess_file.rs` and `deduplicate.rs` are Rust scripts that independently manage data cleaning and deduplication.
+
+## Shell Script
+
+- `indexing.sh` is a Bash script that sequentially initiates Rust scripts, managing the flow from raw data input to deduplicated output.
+
+# Build and Application Configuration
+
+## Gradle Build Configuration (`build.gradle.kts`)
+
+- Set up to compile Rust code, define clean-up tasks, copy binaries, and integrate with the Kotlin build process.
+
+## Kotlin Application (`Wallet.kt`)
+
+- Serves as the Kotlin application's entry point, employing Javalin to handle web content delivery and HTTP request management.
+
+## Logging Configuration (`logback.xml` and `logging.conf`)
+
+- Determine logging practices, specifying output, format, level, and target destination for log messages.
+
+## Gradle Wrapper
+
+- Ensures consistent Gradle usage across different environments by using a specific version embedded in the project.
+
+## Logging Implementation
+
+- Integrates SLF4J for logging within Kotlin code, with configurations managed by `logback.xml`.
+
+# User-Defined Path Configuration
+
+- To allow for user-defined paths, the system can utilize environment variables or command-line arguments.
+- These are read by the `indexing.sh` script and passed to Rust scripts accordingly.
+
+# Project Structure and Manifest
+
+## Cargo Manifest (`Cargo.toml`)
+
+- Outlines Rust project dependencies and build settings.
+
+# Execution Overview
+
+1. `indexing.sh` is initiated by a user or a scheduled job.
+2. The script calls `preprocess_file.rs` to process files in `SOURCE_DIR`.
+3. Processed files are placed in `PROCESSED_DIR`.
+4. `indexing.sh` triggers `deduplicate.rs` to process files in `PROCESSED_DIR`.
+5. Deduplicated files are deposited in `DEDUP_DIR`.
+6. Optionally, `update_database.sh` is used to populate a database with the data in `DEDUP_DIR`.
+
+This structured approach ensures systematic handling of data from initial processing to potential database integration.
