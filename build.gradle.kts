@@ -19,6 +19,7 @@ application {
     mainClass.set("com.wallet.WalletKt")
 }
 
+// my cheat to make the builds build
 tasks.processResources {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
