@@ -34,7 +34,8 @@ README.md
 - Maven https://javalin.io/tutorials/maven-setup (3.6.3)
 - Javalin https://github.com/javalin/javalin (5.6.3)
 - Rust 1.77.0 or higher
-- Cargo (Rust's build tool & package manager)
+  - Cargo (Rust's build tool & package manager)
+  - ToolChain Manager Stable
 
 #### Project Structure
 -----------------
@@ -73,6 +74,14 @@ Ensure your Rust binaries are compiled and located in a directory that the index
 1. FORK then Clone your own forked repo.
 2. Open the project in your IDE aka VSCodium
 3. Ensure that the JDK is properly set up in your IDE.
+
+#### FOR DOCKER IMAGE
+* Go to unster directory in terminal
+ - Build the Docker image
+`docker build -t unster-image .`
+ - Run the Docker container
+`docker run -p 8080:8080 unster-image`
+
 
 #### Building the Project
 --------------------
