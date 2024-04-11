@@ -137,6 +137,7 @@ Execute the `indexing.sh` script to start the file processing and deduplication.
 
 ```bash
 ./scripts/indexing.sh [source_directory] [processed_directory] [dedup_directory]
+```
 
 Important Notes
 ---------------
