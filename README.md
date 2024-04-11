@@ -33,9 +33,10 @@ README.md
 - An IDE that supports Kotlin https://github.com/VSCodium/vscodium/releases (1.82.2)
 - Maven https://javalin.io/tutorials/maven-setup (3.6.3)
 - Javalin https://github.com/javalin/javalin (5.6.3)
-- Rust 1.77.0 or higher
-  - Cargo (Rust's build tool & package manager)
-  - ToolChain Manager Stable
+- Rust 1.77.0 or higher `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+  - Cargo (Rust's build tool & package manager) 
+    - if you dont have permissions for cargo bin `chmod +x $HOME/.cargo/bin/cargo`
+  - ToolChain Manager Stable `rustup install stable` `rustup default stable`
 
 #### Project Structure
 -----------------
