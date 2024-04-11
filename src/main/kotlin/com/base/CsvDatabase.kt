@@ -4,30 +4,21 @@ import java.io.File
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.nio.file.StandardOpenOption
+import java.io.FileWriter
 
 object CsvDatabase {
-    private const val filePath = "users.csv"
-
-    fun initializeCsv() {
-        val file = File(filePath)
-        if (!file.exists()) {
-            file.writeText("Username,Phone,Email\n")
-        }
-    }
+    private const val CSV_HEADER = "username,phone,email\n"
 
     fun writeUserToCsv(username: String, phone: String, email: String) {
-        val newUserLine = "$username,$phone,$email\n"
-        Files.write(Paths.get(filePath), newUserLine.toByteArray(), StandardOpenOption.APPEND)
-    }
+        val fileWriter = FileWriter("users.csv", true) // Append mode
 
-    fun readUsersFromCsv(): List<User> {
-        return File(filePath).useLines { lines ->
-            lines.drop(1).map { line ->
-                val (username, phone, email) = line.split(",")
-                User(username, phone, email)
-            }.toList()
+        fileWriter.use { writer ->
+            if (File("users.csv").length() == 0L) {
+                // Write the header if the file is new.
+                writer.append(CSV_HEADER)
+            }
+            // Write the user data.
+            writer.append("$username,$phone,$email\n")
         }
     }
 }
-
-data class User(val username: String, val phone: String, val email: String)

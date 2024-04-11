@@ -9,6 +9,12 @@ repositories {
     mavenCentral()
 }
 
+tasks.jar {
+    archiveBaseName.set("unster")
+    archiveVersion.set("1.0.0")
+    from(sourceSets.main.get().output)
+}
+
 dependencies {
     implementation("io.javalin:javalin:5.6.3")
     implementation(kotlin("stdlib"))
