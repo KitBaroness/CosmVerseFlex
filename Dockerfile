@@ -1,3 +1,9 @@
+# Find Running Containers
+docker ps
+
+# End Container
+docker stop <Container ID>
+- - - - - - - - - - - - - - - - - - - 
 # Use OpenJDK 17 Debian-based as the base image
 FROM openjdk:17-bullseye
 
@@ -25,3 +31,4 @@ COPY . /app
 
 # Default command to run on container start
 CMD /bin/bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && gradle run"
+
