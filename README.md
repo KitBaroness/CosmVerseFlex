@@ -1,28 +1,18 @@
 ```     ___           ___           ___                       ___           ___     
-     /__/\         /__/\         /  /\          ___        /  /\         /  /\    
-     \  \:\        \  \:\       /  /:/_        /  /\      /  /:/_       /  /::\   
-      \  \:\        \  \:\     /  /:/ /\      /  /:/     /  /:/ /\     /  /:/\:\  
-  ___  \  \:\   _____\__\:\   /  /:/ /::\    /  /:/     /  /:/ /:/_   /  /:/~/:/  
- /__/\  \__\:\ /__/::::::::\ /__/:/ /:/\:\  /  /::\    /__/:/ /:/ /\ /__/:/ /:/___
- \  \:\ /  /:/ \  \:\~~\~~\/ \  \:\/:/~/:/ /__/:/\:\   \  \:\/:/ /:/ \  \:\/:::::/
-  \  \:\  /:/   \  \:\  ~~~   \  \::/ /:/  \__\/  \:\   \  \::/ /:/   \  \::/~~~~ 
-   \  \:\/:/     \  \:\        \__\/ /:/        \  \:\   \  \:\/:/     \  \:\     
-    \  \::/       \  \:\         /__/:/          \__\/    \  \::/       \  \:\    
-     \__\/         \__\/         \__\/                     \__\/         \__\/   
-     
+███████╗██╗     ███████╗██╗  ██╗███╗   ██╗███████╗████████╗    ███████╗████████╗ █████╗  ██████╗██╗  ██╗
+██╔════╝██║     ██╔════╝╚██╗██╔╝████╗  ██║██╔════╝╚══██╔══╝    ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝
+█████╗  ██║     █████╗   ╚███╔╝ ██╔██╗ ██║█████╗     ██║       ███████╗   ██║   ███████║██║     █████╔╝ 
+██╔══╝  ██║     ██╔══╝   ██╔██╗ ██║╚██╗██║██╔══╝     ██║       ╚════██║   ██║   ██╔══██║██║     ██╔═██╗ 
+██║     ███████╗███████╗██╔╝ ██╗██║ ╚████║███████╗   ██║       ███████║   ██║   ██║  ██║╚██████╗██║  ██╗
+╚═╝     ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝       ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
+                                                                                                        
 ```
-
-
 README.md
 ==========
-
-### Project: Unster Application
-===========================
-
-### Introduction
-------------
-* This Unster Application is a simple Kotlin-based web project using Javalin to serve a web page and handle backend logic. 
-* The project includes a `unster.kt` Kotlin file as the main class and a `home.html` file for the frontend.
+## Introduction
+FlexNet Application is a robust web application leveraging Kotlin with Javalin for serving web content and handling backend logic, integrated with Rust for data processing and shell scripts for automation. The project's core lies in its ability to efficiently process data while offering a user-friendly interface.
+  * This FlexNet Application is a simple Kotlin-based web project using Javalin to serve a web page and handle backend logic. 
+  * The project includes a `Flexnet.kt` Kotlin file as the main class and a `home.html` file for the frontend.
 
 #### Prerequisites
 -------------
@@ -35,7 +25,7 @@ README.md
 - Javalin https://github.com/javalin/javalin (5.6.3)
 - Rust 1.77.0 or higher `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
   - Cargo (Rust's build tool & package manager) 
-    - if you dont have permissions for cargo bin `chmod +x $HOME/.cargo/bin/cargo`
+    - if you don't have permissions for cargo bin `chmod +x $HOME/.cargo/bin/cargo`
   - ToolChain Manager Stable `rustup install stable` `rustup default stable`
 
 #### Project Structure
@@ -47,28 +37,48 @@ README.md
 - `target/`: Rust build artifacts are placed here by Cargo.
 - `Cargo.toml`: Configuration file for Rust project management.
 
-### Configuration
-The application's configuration files are located in the `config/` directory. This includes logging configurations and any other necessary settings for the application to run.
-
-- For logging in Kotlin, update the `src/main/resources/logback.xml` with your desired logging levels and patterns.
-- For logging in Rust, you can set the `RUST_LOG` environment variable, or implement a custom configuration reader that uses the `config/` directory.
-
-
+## Project Structure
+=============
+```
+FlexNet/
+│
+├── src/
+│   ├── main/
+│   │   ├── kotlin/
+│   │   │   └── com/
+│   │   │       └── base/
+│   │   │           └── FlexNetKt.kt  # Main Kotlin server file
+│   │   │
+│   │   ├── resources/
+│   │   │   └── static/
+│   │   │       └── home.html        # Main entry point for the frontend
+│   │   │
+│   │   └── rust/
+│   │       ├── preprocess_file.rs  # Rust script for preprocessing data
+│   │       └── deduplicate_file.rs # Rust script for deduplicating data
+│   │
+│   └── scripts/
+│       └── indexing.sh             # Shell script for managing tasks
+│
+├── build.gradle.kts                # Gradle build configuration file
+├── settings.gradle.kts             # Gradle settings file
+└── gradlew                         # Gradle wrapper executable
+```
 ### Execution Flow
-  #### File Preprocessing:
+* File Preprocessing:
 
-- Rust code in preprocess_file.rs cleans the files in SOURCE_DIR.
-Processed files are stored in `PROCESSED_DIR.`
-#### File Deduplication:
-- Rust code in deduplicate.rs removes duplicates from files in `PROCESSED_DIR.`
-Deduplicated files are stored in `DEDUP_DIR.`
-Script Automation:
-- The  `indexing.sh` shell script calls the Rust binaries to automate preprocessing and deduplication.
-This script can be triggered manually or set up as a cron job for periodic execution.
-Database Indexing:
+  - Rust code in `preprocess_file.rs` cleans files in `SOURCE_DIR`.
+Processed files are stored in `PROCESSED_DIR`.
+* File Deduplication:
 
-If database indexing is part of the process, include logic in the Rust code or another script that reads from DEDUP_DIR and updates the database accordingly.
-Ensure your Rust binaries are compiled and located in a directory that the indexing.sh script knows about. If they're part of the release build, you may need to adjust the paths in the script to point to target/release instead of the current relative paths.
+  - Rust code in deduplicate.rs removes duplicates from files in `PROCESSED_DIR`.
+  - Deduplicated files are stored in `DEDUP_DIR`.
+* Script Automation:
+
+  - `indexing.sh` shell script automates preprocessing and deduplication, triggerable manually or via cron job.
+Database Indexing (if applicable):
+
+* Include logic in Rust code or additional scripts to update databases using data from `DEDUP_DIR`.
 
 #### Setup Instructions
 ------------------
@@ -77,11 +87,13 @@ Ensure your Rust binaries are compiled and located in a directory that the index
 3. Ensure that the JDK is properly set up in your IDE.
 
 #### FOR DOCKER IMAGE
-* Go to unster directory in terminal
- - Build the Docker image
-`docker build -t unster-image .`
- - Run the Docker container
-`docker run -p 8080:8080 unster-image`
+* Go to FlexNet directory in terminal
+```
+ # Build the Docker image
+docker build -t flexnet-application .
+ # Run the Docker container
+docker run -p 8080:8080 flexnet-application
+```
 
 
 #### Building the Project
@@ -140,22 +152,47 @@ Execute the `indexing.sh` script to start the file processing and deduplication.
 ./scripts/indexing.sh [source_directory] [processed_directory] [dedup_directory]
 ```
 
-Important Notes
----------------
-- The `home.html` file is served as a static file by the Javalin server running in `unster.kt`.
-- Any changes to the Kotlin files will require a rebuild of the project.
-- For detailed information on the project's functionality and API endpoints, refer to the inline comments in the `unster.kt` file.
 
-```
+## How Each Component Works
+- - - - - - - - - - - -
 
-#### If no directories are specified, it will use the defaults defined within the script.
+#### Kotlin/Javalin Server (FlexNetKt.kt):
 
-### Customizing Paths
-Users can customize the source, processed, and deduplication paths by providing them as arguments when running the indexing.sh script.
+#### This is the core of your server application. It initializes a Javalin server which listens on port 8080.
+The server configures static file handling to serve home.html directly from the /static directory. This setup ensures that users can access the web interface by navigating to `http://localhost:8080/home.html` in their browser.
+The server also defines endpoints for API operations which might interact with the Rust scripts or handle other backend logic.
+HTML Frontend (home.html):
 
-#### Additional Information
--The Rust binaries for preprocessing and deduplication need to be compiled before   running the indexing.sh script.
-    -The `indexing.sh` script can be set up as a cron job for periodic execution.
+* Located in the `/static` directory, this file acts as the main interface for user interaction. It includes forms and scripts to communicate with the backend via AJAX requests, handling tasks such as user verification or data processing.
+This file uses JavaScript to make asynchronous requests to the server endpoints defined in the Kotlin application, facilitating dynamic content updates without page reloads.
+
+#### Rust Scripts:
+* `preprocess_file.rs` and `deduplicate_file.rs` located in the `/rust` directory are designed to perform data processing tasks. These scripts can be invoked from the Kotlin server using ProcessBuilder or through the shell script for batch processing.
+
+#### Shell Script (manage.sh):
+* This script in the `/scripts` directory helps in managing routine tasks like starting the server or processing files through Rust binaries. It can be manually executed or scheduled via cron jobs to automate batch processing tasks.
+
+#### Gradle Configuration (build.gradle.kts and settings.gradle.kts):
+* These files configure how the project is built and run. They ensure that all dependencies are properly managed and compile the Kotlin application correctly.
+User Interaction Flow
+
+#### Accessing the Website:
+* Users access the FlexNet application by visiting `http://localhost:8080/home.html` after the server has been started using the Gradle wrapper command `./gradlew run`.
+The home.html page serves as the user interface, allowing them to interact with the application through forms and buttons that trigger AJAX calls.
+
+#### Backend Interaction:
+* When a user submits data via the frontend (for instance, uploading a file for processing), the AJAX calls hit the endpoints defined in the Kotlin application.
+Depending on the functionality, these endpoints might process data immediately using Rust scripts or queue tasks for later processing.
+
+#### File Usage:
+* `HTML`, `CSS`, `JavaScript`, and images are served statically from the `/static directory`, ensuring quick loading and separation of static content from server logic.
+Changes or Confirmations Needed
+
+#### To finalize your setup and ensure everything functions as expected, you should:
+* Test all endpoints to confirm that they correctly handle requests and interact with the Rust scripts as intended.
+Review static file paths in both the server setup and `HTML` references to ensure they align and are accessible via the web browser.
+Ensure error handling is robust in both frontend and backend to gracefully manage any issues during operation.
+By following these guidelines and setups, your FlexNet application should provide a seamless and efficient user experience, leveraging the strengths of Kotlin, Rust, and shell scripting within a well-organized project structure.
 
 ```
 ***************************************************
@@ -172,79 +209,3 @@ Users can customize the source, processed, and deduplication paths by providing 
 ### Contributions and Contact
 * For contributions, please open a pull request or an issue.
 * For questions or support, contact @NinjaAssPirate | @KitBaroness
-
-- - - - - - - - - 
-# Process Flow {MANIFESTO}
-
-## File Preprocessing
-
-- The `preprocess_file.rs` Rust script cleans input files by performing operations such as special character removal and whitespace trimming.
-- Cleaned files are directed to the directory defined by `PROCESSED_DIR`.
-
-## File Deduplication
-
-- The `deduplicate.rs` Rust script processes cleaned files to remove duplicate entries, ensuring data uniqueness.
-- Unique data entries are saved to the directory indicated by `DEDUP_DIR`.
-
-## Automation via Script
-
-- The `indexing.sh` script manages the file processing workflow, triggering the Rust scripts for preprocessing and deduplication tasks.
-- This script may be run manually or set as a cron job for routine operations.
-
-## Optional Database Indexing
-
-- In cases where data needs to be indexed into a database, either the Rust code is expanded or a supplementary script, `update_database.sh`, is implemented to import data from `DEDUP_DIR` to the chosen database system.
-
-# File and Script Interaction
-
-## Rust Scripts
-
-- `preprocess_file.rs` and `deduplicate.rs` are Rust scripts that independently manage data cleaning and deduplication.
-
-## Shell Script
-
-- `indexing.sh` is a Bash script that sequentially initiates Rust scripts, managing the flow from raw data input to deduplicated output.
-
-# Build and Application Configuration
-
-## Gradle Build Configuration (`build.gradle.kts`)
-
-- Set up to compile Rust code, define clean-up tasks, copy binaries, and integrate with the Kotlin build process.
-
-## Kotlin Application (`Unster.kt`)
-
-- Serves as the Kotlin application's entry point, employing Javalin to handle web content delivery and HTTP request management.
-
-## Logging Configuration (`logback.xml` and `logging.conf`)
-
-- Determine logging practices, specifying output, format, level, and target destination for log messages.
-
-## Gradle Wrapper
-
-- Ensures consistent Gradle usage across different environments by using a specific version embedded in the project.
-
-## Logging Implementation
-
-- Integrates SLF4J for logging within Kotlin code, with configurations managed by `logback.xml`.
-
-# User-Defined Path Configuration
-
-- To allow for user-defined paths, the system can utilize environment variables or command-line arguments.
-- These are read by the `indexing.sh` script and passed to Rust scripts accordingly.
-
-# Project Structure and Manifest
-
-## Cargo Manifest (`Cargo.toml`)
-
-- Outlines Rust project dependencies and build settings.
-
-# Execution Overview
-
-1. `indexing.sh` is initiated by a user or a scheduled job.
-2. The script calls `preprocess_file.rs` to process files in `SOURCE_DIR`.
-3. Processed files are placed in `PROCESSED_DIR`.
-4. `indexing.sh` triggers `deduplicate.rs` to process files in `PROCESSED_DIR`.
-5. Deduplicated files are deposited in `DEDUP_DIR`.
-6. Optionally, `update_database.sh` is used to populate a database with the data in `DEDUP_DIR`.
-
-This structured approach ensures systematic handling of data from initial processing to potential database integration.

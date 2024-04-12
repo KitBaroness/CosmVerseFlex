@@ -10,10 +10,20 @@ repositories {
 }
 
 tasks.jar {
-    archiveBaseName.set("unster")
+    archiveBaseName.set("FlexNet")
     archiveVersion.set("1.0.0")
+    // existing configurations skip because I like to cheat. Clean up your crap.
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from(sourceSets.main.get().output)
+    manifest {
+        attributes(
+            "Main-Class" to "com.base.FlexNetKt" 
+        )
+    }
+    // Includes all dependencies into the JAR file (creates a fat JAR)
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
 }
+
 
 dependencies {
     implementation("io.javalin:javalin:5.6.3")
@@ -24,10 +34,10 @@ dependencies {
 }
 
 application {
-    mainClass.set("com.base.UnsterKt")
+    mainClass.set("com.base.FlexNetKt")
 }
 
-// my cheat to make the builds build
+// my cheat to make the builds build for everything other than Jar
 tasks.processResources {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
@@ -41,7 +51,11 @@ sourceSets {
     }
 }
 
-// Add a custom task to clean Rust build outputs
+tasks.withType<JavaExec> {
+    args = listOf("server")
+}
+
+// A Custom task to clean Rust build outputs
 tasks.register("cleanRust") {
     doLast {
         exec {
@@ -50,22 +64,23 @@ tasks.register("cleanRust") {
     }
 }
 
-// Ensure the Rust clean task is called when Gradle clean is run
+// Clean task is called when Gradle clean is run
 tasks.named("clean").configure {
     dependsOn("cleanRust")
 }
 
-// Task to build the Rust code
+// Task to build Rust
 tasks.register("buildRust") {
     doLast {
         exec {
-            workingDir("src/main/rust") // Set the working directory to the Rust project root
+            workingDir("src/main/rust") 
+            // working directory is Rust project root
             commandLine("cargo", "build", "--release",)
         }
     }
 }
 
-// Task to copy Rust binaries to a specific directory
+// Rust binaries copy to a specific directory
 tasks.register<Copy>("copyRustBinaries") {
     dependsOn("buildRust")
     from("${projectDir}/src/main/rust/target/release/") // Adjust the path as needed

@@ -1,34 +1,28 @@
-// preprocess_file.rs
-use std::env;
-use std::fs::{self, File};
-use std::io::{self, Read, Write};
-use std::path::Path;
+use std::io::{self, Read, Write, BufReader, BufWriter};
 
-fn preprocess_file(file_path: &Path) -> io::Result<()> {
-    let mut file = File::open(file_path)?;
+fn preprocess_data<R: Read, W: Write>(mut reader: R, mut writer: W) -> io::Result<()> {
     let mut contents = String::new();
-    file.read_to_string(&mut contents)?;
+    reader.read_to_string(&mut contents)?;
 
-    // Add your preprocessing logic here
+    // Here, add your preprocessing logic.
     // For example, removing special characters, trimming whitespace, etc.
-    
     let processed_contents = preprocess_logic(contents);
 
-    let mut output_file = File::create("processed_data.txt")?;
-    write!(output_file, "{}", processed_contents)?;
+    write!(writer, "{}", processed_contents)?;
     Ok(())
 }
 
 fn preprocess_logic(contents: String) -> String {
-    // Add actual preprocessing steps here
+    // Replace newline and carriage return characters
     contents.replace("\n", "").replace("\r", "")
 }
 
 fn main() -> io::Result<()> {
-    let args: Vec<String> = env::args().collect();
-    if args.len() < 2 {
-        return Err(io::Error::new(io::ErrorKind::InvalidInput, "No file path provided"));
-    }
-    let file_path = Path::new(&args[1]);
-    preprocess_file(file_path)
+    let stdin = io::stdin();
+    let stdout = io::stdout();
+
+    let reader = BufReader::new(stdin);
+    let writer = BufWriter::new(stdout);
+
+    preprocess_data(reader, writer)
 }

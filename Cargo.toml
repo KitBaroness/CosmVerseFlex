@@ -1,14 +1,15 @@
 [package]
-name = "Unster"
+name = "FlexNet"
 version = "0.1.0"
 edition = "2021"
 
 authors = ["Kit Baroness <kit@AcmeWerx.com>"]
-description = "small data with the UNdatabase"
-repository = "https://github.com/cryptoversus-io/unster.git"
+description = "FlexNet Stack for DDD"
+repository = "https://github.com/cryptoversus-io/FlexNet.git"
 license = "MIT" 
 
 [dependencies]
+actix-web = "4"
 regex = "1.3"
 serde = "1.0"
 log = "0.4"

@@ -1,65 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>UNSTER Application</title>
+    <meta charset="UTF-8">
+    <title>FlexNet Application</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        input, button { margin: 5px; }
+    </style>
 </head>
 <body>
-    <div id="announcement"></div>
 
-    <div id="account-creation">
-        <h2>Create Account</h2>
-        <form id="create-account-form">
-            <input type="text" id="username" name="username" placeholder="Username" required>
-            <input type="text" id="phone" name="phone" placeholder="Phone Number" required>
-            <input type="email" id="email" name="email" placeholder="Email" required>
-            <button type="submit">Create Account</button>
-        </form>
-    </div>
+<div id="user-verification">
+    <h2>User Verification</h2>
+    <input type="text" id="username" placeholder="Enter username" required>
+    <input type="email" id="email" placeholder="Enter email" required>
+    <button onclick="verifyUser()">Verify</button>
+</div>
 
-    <div id="home">
-        Congratulations! You've successfully the UNdatabase Indexer.
-    </div>
+<div id="index-results">
+    <h2>Indexing Results</h2>
+    <button onclick="retrieveIndexingResults()">Retrieve Results</button>
+    <ul id="results-list"></ul>
+</div>
 
-    <div id="menu"></div>
+<script>
+function verifyUser() {
+    var username = document.getElementById('username').value;
+    var email = document.getElementById('email').value;
 
-    <script>
-        document.getElementById("create-account-form").addEventListener("submit", function(event) {
-            event.preventDefault();
+    axios.post('/verify-user', {
+        username: username,
+        email: email
+    })
+    .then(function (response) {
+        alert(response.data.message);
+    })
+    .catch(function (error) {
+        console.error('Error during user verification:', error);
+        alert("Error: " + error.message);
+    });
+}
 
-            var username = document.getElementById("username").value;
-            var phone = document.getElementById("phone").value;
-            var email = document.getElementById("email").value;
-
-            fetch("/create-account", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: `username=${encodeURIComponent(username)}&phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}`
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log("Response data:", data);
-                alert(data.message);
-            })
-            .catch((error) => {
-                console.error('Fetch Error:', error);
-                alert("Error: " + error.message);
-            });
+function retrieveIndexingResults() {
+    axios.get('/get-indexing-results')
+    .then(function (response) {
+        var resultsList = document.getElementById('results-list');
+        resultsList.innerHTML = ''; // Clear previous results
+        response.data.forEach(function(result) {
+            var listItem = document.createElement('li');
+            listItem.textContent = `ID: ${result.id}, File Path: ${result.filePath}, Result: ${result.result}`;
+            resultsList.appendChild(listItem);
         });
+    })
+    .catch(function (error) {
+        console.error('Error during retrieving indexing results:', error);
+        alert("Error: " + error.message);
+    });
+}
 
-        function displayHome(home) {
-            document.getElementById("home").innerText = home;
-        }
+// Additional scripts to handle form submissions and interact with the backend
+</script>
 
-        displayHome("Congratulations! You've successfully deployed the UNSTER");
-
-        // Additional JavaScript to interact with the backend
-    </script>
 </body>
 </html>

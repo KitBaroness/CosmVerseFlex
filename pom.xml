@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.base</groupId>
-    <artifactId>Unster</artifactId>
+    <artifactId>FlexNet</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -57,7 +57,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                   <mainClass>com.base.UnsterKt</mainClass>
+                   <mainClass>com.base.FlexNetKt</mainClass>
                 </configuration>
             </plugin>
 
