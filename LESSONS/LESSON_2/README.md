@@ -30,7 +30,7 @@ import io.javalin.http.staticfiles.Location
 
 fun main() {
     val app = Javalin.create { config ->
-        config.addStaticFiles("/static", Location.CLASSPATH)
+          config.staticFiles.add ("/static", Location.CLASSPATH)
     }.start(7080)
 
     // Keep the existing routes and add new ones as needed.

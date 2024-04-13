@@ -174,7 +174,8 @@ This file uses JavaScript to make asynchronous requests to the server endpoints 
 
 #### Gradle Configuration (build.gradle.kts and settings.gradle.kts):
 * These files configure how the project is built and run. They ensure that all dependencies are properly managed and compile the Kotlin application correctly.
-User Interaction Flow
+
+### User Interaction Flow
 
 #### Accessing the Website:
 * Users access the FlexNet application by visiting `http://localhost:8080/home.html` after the server has been started using the Gradle wrapper command `./gradlew run`.
