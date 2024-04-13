@@ -95,9 +95,9 @@ Database Indexing (if applicable):
 * Go to Dapp directory in terminal
 ```
  # Build the Docker image
-docker build -t Dapp-application .
+docker build -t dapp-application .
  # Run the Docker container
-docker run -p 8080:8080 Dapp-application
+docker run -p 8080:8080 dapp-application
 ```
 
 

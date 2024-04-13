@@ -31,6 +31,14 @@ dependencies {
     implementation("org.slf4j:slf4j-simple:2.0.0")
     implementation("ch.qos.logback:logback-classic:1.2.3")
     implementation("org.slf4j:slf4j-api:1.7.30") 
+     // JAXB API
+    implementation("javax.xml.bind:jaxb-api:2.3.1")
+    // JAXB Core
+    implementation("com.sun.xml.bind:jaxb-core:2.3.0.1")
+    // JAXB Implementation
+    implementation("com.sun.xml.bind:jaxb-impl:2.3.3")
+    // Additional dependency to handle annotations
+    implementation("javax.annotation:javax.annotation-api:1.3.2")
 }
 
 application {

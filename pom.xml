@@ -34,7 +34,35 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.32</version>
         </dependency>
-    </dependencies>
+
+        <!-- JAXB API -->
+        <dependency>
+           <groupId>javax.xml.bind</groupId>
+           <artifactId>jaxb-api</artifactId>
+           <version>2.3.1</version>
+        </dependency>
+
+        <!-- JAXB Core -->
+        <dependency>
+           <groupId>com.sun.xml.bind</groupId>
+          <artifactId>jaxb-core</artifactId>
+          <version>2.3.0.1</version>
+        </dependency>
+
+         <!-- JAXB Implementation -->
+        <dependency>
+           <groupId>com.sun.xml.bind</groupId>
+           <artifactId>jaxb-impl</artifactId>
+           <version>2.3.3</version>
+        </dependency>
+
+        <!-- Additional dependency to handle annotations -->
+        <dependency>
+          <groupId>javax.annotation</groupId>
+          <artifactId>javax.annotation-api</artifactId>
+          <version>1.3.2</version>
+        </dependency>
+ </dependencies>
 
     <build>
         <sourceDirectory>Development/src/main/kotlin</sourceDirectory>
