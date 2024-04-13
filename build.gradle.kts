@@ -45,7 +45,7 @@ tasks.processResources {
 sourceSets {
     main {
         resources {
-            srcDirs("src/main/resources/")
+            srcDirs("Development/src/main/resources/")
             include("**/*.html")
         }
     }
@@ -73,7 +73,7 @@ tasks.named("clean").configure {
 tasks.register("buildRust") {
     doLast {
         exec {
-            workingDir("src/main/rust") 
+            workingDir("Development/src/main/rust") 
             // working directory is Rust project root
             commandLine("cargo", "build", "--release",)
         }
@@ -83,7 +83,7 @@ tasks.register("buildRust") {
 // Rust binaries copy to a specific directory
 tasks.register<Copy>("copyRustBinaries") {
     dependsOn("buildRust")
-    from("${projectDir}/src/main/rust/target/release/") // Adjust the path as needed
+    from("${projectDir}/Development/src/main/rust/target/release/") // Adjust the path as needed
     into("${buildDir}/bin") // Destination directory for the Rust binaries
     // Specify patterns for the files to include, adjust based on your output binaries
     include("**/*") // Include all files for Unix-like OS

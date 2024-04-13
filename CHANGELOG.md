@@ -14,4 +14,4 @@
 
 ### Fixed
 - In Javalin 5.x, the method for handling static files has been changed to `staticFiles.add`.  
-- Static files has been moved to `src/main/resources/static`.
+- Static files has been moved to `Development/src/main/resources/static`.

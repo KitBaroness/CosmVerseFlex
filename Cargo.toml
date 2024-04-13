@@ -18,11 +18,11 @@ dotenv = "0.15"
 
 [[bin]]
 name = "my_binary"
-path = "src/main/rust/bin/my_binary.rs"
+path = "Development/src/main/rust/bin/my_binary.rs"
 
 [lib]
 name = "my_library"
-path = "src/main/rust/lib.rs"
+path = "Development/src/main/rust/lib.rs"
 
 [dev-dependencies]
 
