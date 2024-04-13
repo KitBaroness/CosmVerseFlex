@@ -10,9 +10,9 @@
 README.md
 ==========
 ## Introduction
-FlexNet Application is a robust web application leveraging Kotlin with Javalin for serving web content and handling backend logic, integrated with Rust for data processing and shell scripts for automation. The project's core lies in its ability to efficiently process data while offering a user-friendly interface.
-  * This FlexNet Application is a simple Kotlin-based web project using Javalin to serve a web page and handle backend logic. 
-  * The project includes a `Flexnet.kt` Kotlin file as the main class and a `home.html` file for the frontend.
+F2T Application is a robust web application leveraging Kotlin with Javalin for serving web content and handling backend logic, integrated with Rust for data processing and shell scripts for automation. The project's core lies in its ability to efficiently process data while offering a user-friendly interface.
+  * This F2T Application is a simple Kotlin-based web project using Javalin to serve a web page and handle backend logic. 
+  * The project includes a `F2T.kt` Kotlin file as the main class and a `home.html` file for the frontend.
 
 #### Prerequisites
 -------------
@@ -40,14 +40,14 @@ FlexNet Application is a robust web application leveraging Kotlin with Javalin f
 ## Project Structure
 =============
 ```
-FlexNet/
+F2T/
 │
 ├── src/
 │   ├── main/
 │   │   ├── kotlin/
 │   │   │   └── com/
 │   │   │       └── base/
-│   │   │           └── FlexNetKt.kt  # Main Kotlin server file
+│   │   │           └── F2TKt.kt  # Main Kotlin server file
 │   │   │
 │   │   ├── resources/
 │   │   │   └── static/
@@ -87,12 +87,12 @@ Database Indexing (if applicable):
 3. Ensure that the JDK is properly set up in your IDE.
 
 #### FOR DOCKER IMAGE
-* Go to FlexNet directory in terminal
+* Go to F2T directory in terminal
 ```
  # Build the Docker image
-docker build -t flexnet-application .
+docker build -t F2T-application .
  # Run the Docker container
-docker run -p 8080:8080 flexnet-application
+docker run -p 8080:8080 F2T-application
 ```
 
 
@@ -156,7 +156,7 @@ Execute the `indexing.sh` script to start the file processing and deduplication.
 ## How Each Component Works
 - - - - - - - - - - - -
 
-#### Kotlin/Javalin Server (FlexNetKt.kt):
+#### Kotlin/Javalin Server (F2TKt.kt):
 
 #### This is the core of your server application. It initializes a Javalin server which listens on port 8080.
 The server configures static file handling to serve home.html directly from the /static directory. This setup ensures that users can access the web interface by navigating to `http://localhost:8080/home.html` in their browser.
@@ -178,7 +178,7 @@ This file uses JavaScript to make asynchronous requests to the server endpoints 
 ### User Interaction Flow
 
 #### Accessing the Website:
-* Users access the FlexNet application by visiting `http://localhost:8080/home.html` after the server has been started using the Gradle wrapper command `./gradlew run`.
+* Users access the F2T application by visiting `http://localhost:8080/home.html` after the server has been started using the Gradle wrapper command `./gradlew run`.
 The home.html page serves as the user interface, allowing them to interact with the application through forms and buttons that trigger AJAX calls.
 
 #### Backend Interaction:
@@ -193,7 +193,7 @@ Changes or Confirmations Needed
 * Test all endpoints to confirm that they correctly handle requests and interact with the Rust scripts as intended.
 Review static file paths in both the server setup and `HTML` references to ensure they align and are accessible via the web browser.
 Ensure error handling is robust in both frontend and backend to gracefully manage any issues during operation.
-By following these guidelines and setups, your FlexNet application should provide a seamless and efficient user experience, leveraging the strengths of Kotlin, Rust, and shell scripting within a well-organized project structure.
+By following these guidelines and setups, your F2T application should provide a seamless and efficient user experience, leveraging the strengths of Kotlin, Rust, and shell scripting within a well-organized project structure.
 
 ```
 ***************************************************

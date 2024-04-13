@@ -10,14 +10,14 @@ repositories {
 }
 
 tasks.jar {
-    archiveBaseName.set("FlexNet")
+    archiveBaseName.set("F2T")
     archiveVersion.set("1.0.0")
     // existing configurations skip because I like to cheat. Clean up your crap.
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from(sourceSets.main.get().output)
     manifest {
         attributes(
-            "Main-Class" to "com.base.FlexNetKt" 
+            "Main-Class" to "com.base.F2TKt" 
         )
     }
     // Includes all dependencies into the JAR file (creates a fat JAR)
@@ -34,7 +34,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("com.base.FlexNetKt")
+    mainClass.set("com.base.F2TKt")
 }
 
 // my cheat to make the builds build for everything other than Jar

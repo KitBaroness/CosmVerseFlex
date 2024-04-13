@@ -1,11 +1,11 @@
 [package]
-name = "FlexNet"
+name = "F2T"
 version = "0.1.0"
 edition = "2021"
 
 authors = ["Kit Baroness <kit@AcmeWerx.com>"]
-description = "FlexNet Stack for DDD"
-repository = "https://github.com/cryptoversus-io/FlexNet.git"
+description = "F2T Stack for DDD"
+repository = "https://github.com/cryptoversus-io/F2T.git"
 license = "MIT" 
 
 [dependencies]
