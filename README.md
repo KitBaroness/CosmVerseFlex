@@ -8,6 +8,9 @@
                                                                                                         
 ```
 README.md
+
+git clone --recurse-submodules git@github.com/cryptoversus-io/Development.git
+
 ==========
 ## Introduction
 Dapp Application is a robust web application leveraging Kotlin with Javalin for serving web content and handling backend logic, integrated with Rust for data processing and shell scripts for automation. The project's core lies in its ability to efficiently process data while offering a user-friendly interface.
