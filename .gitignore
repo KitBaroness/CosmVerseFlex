@@ -60,6 +60,7 @@ build/
 .gradle/
 !.gradle-wrapper.jar
 /maven-status/
+build
 
 ## Rustdoc GUI tests
 tests/rustdoc-gui/src/**.lock
@@ -81,3 +82,6 @@ package.json
 *.jar
 *.war
 *.ear
+
+# Inside .gitignore
+subdir/TelegramConfig.kt
