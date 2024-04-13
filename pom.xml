@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.base</groupId>
-    <artifactId>F2T</artifactId>
+    <artifactId>Dapp</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -57,7 +57,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                   <mainClass>com.base.F2TKt</mainClass>
+                   <mainClass>com.base.DappKt</mainClass>
                 </configuration>
             </plugin>
 

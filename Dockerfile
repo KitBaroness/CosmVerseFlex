@@ -13,10 +13,6 @@ RUN apt-get update && apt-get install -y curl unzip zip maven \
 RUN adduser --disabled-password --gecos '' myuser
 USER myuser
 
-# Install Maven
-RUN apt-get update && apt-get install -y maven \
-    && rm -rf /var/lib/apt/lists/*
-
 ENV ANDROID_SDK_URL https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
 ENV ANDROID_API_LEVEL android-29
 ENV ANDROID_BUILD_TOOLS_VERSION 29.0.2
@@ -27,6 +23,8 @@ ENV ANDROID_NDK_HOME ${ANDROID_HOME}/ndk/${ANDROID_NDK_VERSION}/
 
 # Update PATH for Android SDK and NDK
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_NDK_HOME}:${ANDROID_NDK_HOME}/prebuilt/linux-x86_64/bin/
+
+USER root
 
 # Install Android SDK
 RUN mkdir -p "$ANDROID_HOME" .android && \
@@ -41,20 +39,23 @@ RUN mkdir -p "$ANDROID_HOME" .android && \
     "platform-tools" \
     "ndk;$ANDROID_NDK_VERSION"
 
+RUN apt-get update && apt-get install -y libjaxb-api-java
+
+RUN chown -R myuser:myuser "$ANDROID_HOME" .android
+USER myuser
+
 # Set the working directory in the container
 WORKDIR /app
+RUN chown -R myuser:myuser . /app
 
 # Copy the local project files to the container's workspace
 COPY --chown=myuser:myuser . /app
 
 # Copy the JAR file into the container at /app
-COPY --chown=myuser:myuser build/libs/F2T-1.0.0.jar /app/F2T.jar
+COPY --chown=myuser:myuser build/libs/Dapp-1.0.0.jar /app/Dapp.jar
 
 # Expose the port the app runs on
 EXPOSE 8080
 
 # Run the JAR file
-CMD ["java", "-jar", "/app/F2T.jar"]
-
-# Default command to run on container start
-CMD /bin/bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && gradle run"
+CMD ["java", "-jar", "/app/Dapp.jar"]

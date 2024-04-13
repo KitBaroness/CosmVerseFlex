@@ -1,11 +1,11 @@
 [package]
-name = "F2T"
+name = "Dapp"
 version = "0.1.0"
 edition = "2021"
 
 authors = ["Kit Baroness <kit@AcmeWerx.com>"]
-description = "F2T Stack for DDD"
-repository = "https://github.com/cryptoversus-io/F2T.git"
+description = "Dapp Stack for DDD"
+repository = "https://github.com/cryptoversus-io/Dapp.git"
 license = "MIT" 
 
 [dependencies]

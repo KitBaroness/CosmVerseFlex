@@ -10,14 +10,14 @@ repositories {
 }
 
 tasks.jar {
-    archiveBaseName.set("F2T")
+    archiveBaseName.set("Dapp")
     archiveVersion.set("1.0.0")
     // existing configurations skip because I like to cheat. Clean up your crap.
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from(sourceSets.main.get().output)
     manifest {
         attributes(
-            "Main-Class" to "com.base.F2TKt" 
+            "Main-Class" to "com.base.DappKt" 
         )
     }
     // Includes all dependencies into the JAR file (creates a fat JAR)
@@ -34,7 +34,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("com.base.F2TKt")
+    mainClass.set("com.base.DappKt")
 }
 
 // my cheat to make the builds build for everything other than Jar

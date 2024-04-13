@@ -3,7 +3,7 @@
 version = 3
 
 [[package]]
-name = "F2T"
+name = "Dapp"
 version = "0.1.0"
 dependencies = [
  "actix-web",
