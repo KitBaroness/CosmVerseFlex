@@ -9,7 +9,7 @@
 ```
 README.md
 
-git clone --recurse-submodules git@github.com/cryptoversus-io/Development.git
+`git clone --recurse-submodules git@github.com:cryptoversus-io/Stack-Config.git`
 
 ==========
 ## Introduction
