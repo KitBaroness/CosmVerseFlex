@@ -7,32 +7,43 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Set the environment variable for Android SDK location
-ENV ANDROID_SDK_URL=https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
-ENV ANDROID_API_LEVEL=android-29
-ENV ANDROID_BUILD_TOOLS_VERSION=29.0.2
-ENV ANDROID_HOME=/usr/local/android-sdk-linux
-ENV ANDROID_NDK_VERSION=20.0.5594570
-ENV ANDROID_VERSION=29
-ENV ANDROID_NDK_HOME=${ANDROID_HOME}/ndk/${ANDROID_NDK_VERSION}/
+RUN ${ANDROID_HOME}/cmdline-tools/latest/bin/
 
-# Update PATH for Android SDK and NDK
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_NDK_HOME}:${ANDROID_NDK_HOME}/prebuilt/linux-x86_64/bin/
+# Create Android SDK directory
+RUN  mkdir -p "$ANDROID_HOME/.android" && \
+     cd "$ANDROID_HOME" && \
+     curl -o sdk.zip $ANDROID_SDK_URL && \
+     unzip sdk.zip && \
+     rm sdk.zip && \
+
+# Install necessary system packages
+RUN apt-get update && \
+    apt-get install -y curl unzip zip maven apt-utils && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set the environment variable for Android SDK home and related variables
+ENV ANDROID_HOME=/usr/local/android-sdk-linux \
+    COMMANDLINE_TOOLS_VERSION=7302050 \
+    ANDROID_BUILD_TOOLS_VERSION=29.0.2 \
+    ANDROID_VERSION=29 \
+    ANDROID_NDK_VERSION=20.0.5594570 \
+    PATH=${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/ndk/${ANDROID_NDK_VERSION}/:${PATH}
+
+# Download and install Android command-line tools
+RUN mkdir -p ${ANDROID_HOME}/cmdline-tools/latest && \
+    curl -o cmdline-tools.zip "https://dl.google.com/android/repository/commandlinetools-linux-${COMMANDLINE_TOOLS_VERSION}_latest.zip" && \
+    unzip cmdline-tools.zip -d ${ANDROID_HOME}/cmdline-tools && \
+    rm cmdline-tools.zip && \
+    mv ${ANDROID_HOME}/cmdline-tools/cmdline-tools ${ANDROID_HOME}/cmdline-tools/latest && \
+    if [ ! -f ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager ]; then echo "sdkmanager not found."; exit 1; fi && \
+    yes | ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --licenses && \
+    ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --update && \
+    ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" "platforms;android-${ANDROID_VERSION}" "platform-tools" "ndk;${ANDROID_NDK_VERSION}"
 
 # Install SDKMAN, Kotlin, and Gradle
 RUN curl -s "https://get.sdkman.io" | bash && \
-    bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk install kotlin && sdk install gradle" && \
-    rm -rf /var/lib/apt/lists/* 
-
-# Create Android SDK directory and unpack SDK
-RUN mkdir -p "$ANDROID_HOME" .android && \
-    cd "$ANDROID_HOME" && \
-    curl -o sdk.zip $ANDROID_SDK_URL && \
-    unzip sdk.zip && \
-    rm sdk.zip && \
-    yes | ${ANDROID_HOME}/tools/bin/sdkmanager --licenses && \
-    ${ANDROID_HOME}/tools/bin/sdkmanager --update && \
-    ${ANDROID_HOME}/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" "platforms;android-${ANDROID_VERSION}" "platform-tools" "ndk;$ANDROID_NDK_VERSION"
+    bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk install kotlin && sdk install gradle"
 
 # Add a non-root user and switch to it
 RUN adduser --disabled-password --gecos '' myuser
@@ -48,4 +59,4 @@ COPY --chown=myuser:myuser . /app
 EXPOSE 8080
 
 # Command to run the application
-CMD ["java", "-jar", "/app/F2T.jar"]
+CMD ["java", "-jar", "/app/Dapp-1.0.0.jar"]

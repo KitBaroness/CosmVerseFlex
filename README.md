@@ -94,8 +94,16 @@ Database Indexing (if applicable):
 #### FOR DOCKER IMAGE
 * Go to Dapp directory in terminal
 ```
+# If you Don't have Docker
+mkdir -p ~/.docker/cli-plugins/
+curl -L "https://github.com/docker/buildx/releases/download/v0.13.1/buildx-v0.13.1.linux-amd64" -o ~/.docker/cli-plugins/docker-buildx
+chmod a+x ~/.docker/cli-plugins/docker-buildx
+export DOCKER_CLI_PLUGIN_DIR=~/.docker/cli-plugins
+```
+```
+export DOCKER_BUILDKIT=1
  # Build the Docker image
-docker build -t dapp-application .
+DOCKER_BUILDKIT=1 docker build -t dapp-application .
  # Run the Docker container
 docker run -p 8080:8080 dapp-application
 ```
