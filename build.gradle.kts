@@ -1,7 +1,7 @@
 import org.gradle.api.tasks.Copy
 
 plugins {
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.9.21"
     application
 }
 
