@@ -1,3 +1,6 @@
 [submodule "Development/CosmVerse"]
 	path = Development/
 	url = git@github.com:KitBaroness/cosmverse.git
+[submodule "Development"]
+	path = Development
+	url = git@github.com:KitBaroness/cosmverse.git
