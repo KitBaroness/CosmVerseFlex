@@ -43,9 +43,9 @@ Dapp Application is a robust web application leveraging Kotlin with Javalin for 
 ## Project Structure
 =============
 ```
-Stack-Config.gt
+cosmverseflex.git
 |
-├── Development.git
+├── Development (cosmverse.git)
 │   |
 |   src/
 │   ├── main/
@@ -63,8 +63,11 @@ Stack-Config.gt
 │   │       └── deduplicate_file.rs # Rust script for deduplicating data
 │   │
 │   └── scripts/
-│       └── indexing.sh             # Shell script for managing tasks
-│
+│   |    └── indexing.sh             # Shell script for managing tasks
+│   │
+│   │
+│   └──
+│   
 ├── build.gradle.kts                # Gradle build configuration file
 ├── settings.gradle.kts             # Gradle settings file
 └── gradlew                         # Gradle wrapper executable
