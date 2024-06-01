@@ -9,7 +9,7 @@
 ```
 README.md
 
-`git clone --recurse-submodules git@github.com:cryptoversus-io/Stack-Config.git`
+`git clone --recurse-submodules git@github.com:KitBaroness/CosmVerseFlex.git`
 
 ==========
 ## Introduction
@@ -66,7 +66,7 @@ cosmverseflex.git
 │   |    └── indexing.sh             # Shell script for managing tasks
 │   │
 │   │
-│   └──
+│   └── Telegram-bot-api
 │   
 ├── build.gradle.kts                # Gradle build configuration file
 ├── settings.gradle.kts             # Gradle settings file
