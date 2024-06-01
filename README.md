@@ -9,13 +9,22 @@
 ```
 README.md
 
-`git clone --recurse-submodules git@github.com:KitBaroness/CosmVerseFlex.git`
+```
+# Fork & Clone the repository with all the submodules with command
+git clone --recurse-submodules git@github.com:YourUsername/CosmVerseFlex.git
+cd CosmVerseFle`
 
+#Example
+git clone --recurse-submodules git@github.com:KitBaroness/CosmVerseFlex.git
+
+# Initialise Submodules
+git submodule update --init --recursive
+```
 ==========
 ## Introduction
-Dapp Application is a robust web application leveraging Kotlin with Javalin for serving web content and handling backend logic, integrated with Rust for data processing and shell scripts for automation. The project's core lies in its ability to efficiently process data while offering a user-friendly interface.
-  * This Dapp Application is a simple Kotlin-based web project using Javalin to serve a web page and handle backend logic. 
-  * The project includes a `Dapp.kt` Kotlin file as the main class and a `home.html` file for the frontend.
+Dapp Application is a robust web application leveraging Kotlin with Javalin for serving web content compatibility, integrated with Rust for data processing and shell scripts for automation. The project's core lies in its ability to efficiently process data while offering a user-friendly interface.
+  * This Dapp Application is a React web project using Javalin to serve a web page and handle backend logic. 
+
 
 #### Prerequisites
 -------------
@@ -162,26 +171,45 @@ ooO--(_)--Ooo-ooO--(_)--Ooo-ooO--(_)--Ooo-ooO--(_)--Ooo-
    * or
 `./gradlew run`
 
-4. Once the application starts, it will be accessible at `http://localhost:8080`.
-5. Open a web browser and navigate to `http://localhost:8080` to view the `home.html` page.
+4. Once the application starts, it will be accessible at `http://localhost:3000`.
+5. Open a web browser and navigate to `http://localhost:3000` to view the application page.
 
-### Running File Processing and Deduplication
-
-Execute the `indexing.sh` script to start the file processing and deduplication. This script will look for files in the specified source directory and perform operations.
-* Edit your directories you wish to use
-
-```bash
-./scripts/indexing.sh [source_directory] [processed_directory] [dedup_directory]
+### `.gitmodules` Configuration
+-Ensure your .gitmodules file at the root of CosmVerseFlex is configured as follows:
 ```
+[submodule "Development"]
+  path = Development
+  url = git@github.com:YourUsername/cosmverse.git
 
+[submodule "telegram-bot-api"]
+  path = telegram-bot-api
+  url = git@github.com:YourUsername/telegram-bot-api.git
+
+```
+### Git Configurations
+- If the submodule configuration needs to be updated, run:
+```
+git config -f .gitmodules submodule.Development.path Development
+git config -f .gitmodules submodule.Development.url git@github.com:KitBaroness/cosmverse.git
+
+git config -f .gitmodules submodule.telegram-bot-api.path telegram-bot-api
+git config -f .gitmodules submodule.telegram-bot-api.url git@github.com:YourUsername/telegram-bot-api.git
+```
+## Containerisation
+```
+#build using Docker if a Dockerfile is provided
+docker build -t cosmverse-flex .
+```
+### Running the Application
+`docker run -p 3000:3000 cosmverse-flex`
 
 ## How Each Component Works
 - - - - - - - - - - - -
 
 #### Kotlin/Javalin Server (DappKt.kt):
 
-#### This is the core of your server application. It initializes a Javalin server which listens on port 8080.
-The server configures static file handling to serve home.html directly from the /static directory. This setup ensures that users can access the web interface by navigating to `http://localhost:8080/home.html` in their browser.
+#### This is the core of your server application. It initializes a Javalin server which listens on port 3000.
+The server configures static file handling to serve home.html directly from the /static directory. This setup ensures that users can access the web interface by navigating to `http://localhost:3000/home.html` in their browser.
 The server also defines endpoints for API operations which might interact with the Rust scripts or handle other backend logic.
 HTML Frontend (home.html):
 
@@ -200,7 +228,7 @@ This file uses JavaScript to make asynchronous requests to the server endpoints 
 ### User Interaction Flow
 
 #### Accessing the Website:
-* Users access the Dapp application by visiting `http://localhost:8080/home.html` after the server has been started using the Gradle wrapper command `./gradlew run`.
+* Users access the Dapp application by visiting `http://localhost:3000/home.html` after the server has been started using the Gradle wrapper command `./gradlew run`.
 The home.html page serves as the user interface, allowing them to interact with the application through forms and buttons that trigger AJAX calls.
 
 #### Backend Interaction:
