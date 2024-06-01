@@ -20,11 +20,13 @@ Dapp Application is a robust web application leveraging Kotlin with Javalin for 
 #### Prerequisites
 -------------
 - JDK (Java Development Kit) 1.8 or higher
+
 ```sudo apt install wget apt-transport-https -y
 wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | sudo tee /usr/share/keyrings/adoptium.asc
 echo "deb [signed-by=/usr/share/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb focal main" | sudo tee /etc/apt/sources.list.d/adoptium.list
 sudo apt update
 sudo apt install temurin-21-jdk -y```
+
 - Kotlin 1.7.10 or higher https://kotlinlang.org/download/ (1.9.21)
 - Gradle Build Tool (preferably the latest version) https://javalin.io/tutorials/gradle-setup
 - An IDE that supports Kotlin https://github.com/VSCodium/vscodium/releases (1.82.2)
