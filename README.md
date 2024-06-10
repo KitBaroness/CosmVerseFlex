@@ -64,27 +64,29 @@ cosmverseflex.git
 │   |
 |   src/
 │   ├── main/
-│   │   ├── kotlin/
-│   │   │   └── com/
-│   │   │       └── base/
-│   │   │           └── DappKt.kt  # Main Kotlin server file
-│   │   │
-│   │   ├── resources/
-│   │   │   └── static/
-│   │   │       └── home.html        # Main entry point for the frontend
-│   │   │
-│   │   └── rust/
-│   │       ├── preprocess_file.rs  # Rust script for preprocessing data
-│   │       └── deduplicate_file.rs # Rust script for deduplicating data
-│   │
-│   └── scripts/
-│   |    └── indexing.sh             # Shell script for managing tasks
-│   │
-│   │
+│   |   ├── kotlin/
+│   |   │   └── com/
+│   |   │       └── base/
+│   |   │           └── DappKt.kt   # Main Kotlin server file
+│   |   ├── resources/
+│   |   │   └── static/
+│   |   │       └── home.html       # Main entry point for the frontend
+│   |   ├── rust/
+│   |   |   ├── bin/
+│   |   |   |    └── my_binary.rs
+│   |   |   └── contracts/
+│   |   |         ├── contract.rs
+│   |   |         ├── error.rs
+│   |   |         ├── msg.rs
+│   |   |         └── state.rs
+│   |   └── scripts/
+│   |          └── indexing.sh      # Shell script for managing tasks
 │   └── Telegram-bot-api
 │   
 ├── build.gradle.kts                # Gradle build configuration file
 ├── settings.gradle.kts             # Gradle settings file
+├── cargo.toml                      # Rust Configuration File
+├── pom.xml                         # Mavin Configuration File
 └── gradlew                         # Gradle wrapper executable
 ```
 ### Execution Flow

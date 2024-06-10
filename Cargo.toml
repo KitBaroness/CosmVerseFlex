@@ -1,7 +1,7 @@
 [package]
 name = "CosmVerseFlex"
 version = "0.1.0"
-edition = "2021"
+edition = "2018"
 
 authors = ["Kit Baroness <ddd@DevCorp.org>"]
 description = "Dapp Stack for DDD"
@@ -9,6 +9,12 @@ repository = "https://github.com/KitBaroness/CosmVerseFlex"
 license = "MIT" 
 
 [dependencies]
+cosmwasm-std = "0.16.0"
+cosmwasm-storage = "0.16.0"
+cosmwasm-schema = "0.16.0"
+schemars = "0.8.6"
+thiserror = "1.0"
+cw-storage-plus = "0.9.0"
 clap = { version = "4.0", features = ["derive"] }
 dashmap = "5.5"
 regex = "1.3"
