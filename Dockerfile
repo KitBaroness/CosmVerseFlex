@@ -56,7 +56,7 @@ WORKDIR /app
 COPY --chown=myuser:myuser . /app
 
 # Expose the port the app runs on
-EXPOSE 8080
+EXPOSE 3000
 
 # Command to run the application
 CMD ["java", "-jar", "/app/Dapp-1.0.0.jar"]

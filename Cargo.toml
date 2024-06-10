@@ -1,11 +1,11 @@
 [package]
-name = "FlexNet"
+name = "CosmVerseFlex"
 version = "0.1.0"
 edition = "2021"
 
-authors = ["Kit Baroness <kit@AcmeWerx.com>"]
+authors = ["Kit Baroness <ddd@DevCorp.org>"]
 description = "Dapp Stack for DDD"
-repository = "https://github.com/cryptoversus-io/Dapp.git"
+repository = "https://github.com/KitBaroness/CosmVerseFlex"
 license = "MIT" 
 
 [dependencies]
